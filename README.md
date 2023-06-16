@@ -1,5 +1,7 @@
 # habitshadow-frontend
 
+[![CI](https://github.com/salemraffa/habitshadow-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/salemraffa/habitshadow-frontend/actions/workflows/ci.yml)
+
 ## Project setup
 ```
 npm install
