@@ -4,6 +4,9 @@
   <input v-model="idField" placeholder="ID">
     <input v-model="countField" placeholder="Count">
     <input v-model="nameField" placeholder="Name">
+    <input v-model="descriptionField" placeholder="Description">
+    <input v-model="stackField" placeholder="Stack">
+
   </div>
 
   <div>
@@ -20,7 +23,9 @@ export default {
       items: [],
       nameField: '',
       idField: '',
-      countField: ''
+      countField: '',
+      descriptionField:'',
+      stackField:''
     }
   },  methods: {
     loadThings() {
@@ -41,7 +46,9 @@ export default {
       const data = {
         name: this.nameField,
         id: this.idField,
-        count: this.countField
+        count: this.countField,
+        description: this.descriptionField,
+        stack:this.stackField
       }
        const requestOptions = {
         method: 'POST',
