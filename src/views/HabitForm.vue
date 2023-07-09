@@ -3,7 +3,6 @@
     <HabitData msg = "Simple Habit Tracker."/>
   </div>
 </template>
-
 <script>
 import HabitData from "@/components/HabitData.vue";
 

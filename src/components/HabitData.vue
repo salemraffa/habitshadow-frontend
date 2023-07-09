@@ -2,16 +2,16 @@
   <h3> {{msg}} </h3>
   <div>
   <input v-model="idField" placeholder="ID">
-    <input v-model="countField" placeholder="Count">
-    <input v-model="nameField" placeholder="Name">
+    <input v-model="countField" placeholder="Count" type="number">
+    <input v-model="nameField" placeholder="Name" type="text" ref="nameInput">
     <input v-model="descriptionField" placeholder="Description">
     <input v-model="stackField" placeholder="Stack">
-
   </div>
-
   <div>
     <button type="button" @click = "save()">Save</button>
   </div>
+
+
 </template>
 
 <script>
@@ -25,9 +25,11 @@ export default {
       idField: '',
       countField: '',
       descriptionField:'',
-      stackField:''
+      stackField:'',
     }
   },  methods: {
+
+      },
     loadThings() {
       const endpoint = 'http://localhost:8080/habits'
       const requestOptions = {
@@ -64,11 +66,21 @@ export default {
            })
            .catch(error => console.log('error', error))
     }
+
   }
-}
+
 </script>
 
 
 <style scoped>
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+button {
+  color: green;
+}
+
 
 </style>
