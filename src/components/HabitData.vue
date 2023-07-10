@@ -6,6 +6,7 @@
     <input v-model="nameField" placeholder="Name" type="text" ref="nameInput">
     <input v-model="descriptionField" placeholder="Description">
     <input v-model="stackField" placeholder="Stack">
+    <input v-model="chargeField" placeholder="Charge">
     <button type="button" @click="save()">Save</button>
   </div>
 
@@ -23,6 +24,7 @@
         <td>{{ item.name }}</td>
         <td>{{ item.description }}</td>
         <td>{{ item.stack }}</td>
+        <td>{{ item.charge }}</td>
 
       </tr>
       <tr>
@@ -31,9 +33,54 @@
         <td>{{ nameField }}</td>
         <td>{{ descriptionField }}</td>
         <td>{{ stackField }}</td>
+        <td>{{ chargeField }}</td>
       </tr>
       </tbody>
     </table>
+  </div>
+
+  <button class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#HabitData" aria-controls="#HabitData">
+    <i class="bi bi-person-plus-fill"></i>
+  </button>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="habits-create-offcanvas" aria-labelledby="offcanvas-label">
+    <div class="offcanvas-header">
+      <h5 id="offcanvas-label">New Habit</h5>
+      <button type="button" id="close-offcanvas" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form class="text-start needs-validation" id="habits-create-form" novalidate>
+        <div class="mb-3">
+          <label for="nameField" class="form-label">nameField</label>
+          <input type="text" class="form-control" id="nameField" v-model="nameField" required>
+          <div class="invalid-feedback">
+            Please provide the name.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="countField" class="form-label">countField</label>
+          <input type="text" class="form-control" id="countField" v-model="countField" required>
+          <div class="invalid-feedback">
+            Please provide the count till now.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="chargeField" class="form-label">Charge</label>
+          <select id="charge" class="form-select" v-model="chargeField" required>
+            <option value="" selected disabled>Choose...</option>
+            <option value="Positive">True</option>
+            <option value="Negative">False</option>
+            <option value="Neutral">Neutral</option>
+          </select>
+
+        </div>
+
+
+        <div class="mt-5">
+          <button class="btn btn-primary me-3" type="submit" @click.prevent="createPerson">Create</button>
+          <button class="btn btn-danger" type="reset">Reset</button>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -56,6 +103,7 @@ export default {
       countField: '',
       descriptionField: '',
       stackField: '',
+      chargeField:''
     }
   }, methods: {
     myFilterFunc(crit) {
@@ -83,7 +131,8 @@ export default {
         id: this.idField,
         count: this.countField,
         description: this.descriptionField,
-        stack: this.stackField
+        stack: this.stackField,
+        charge: this.chargeField
       }
       const requestOptions = {
         method: 'POST',
@@ -110,11 +159,15 @@ export default {
 
 
 <style scoped>
-table {
-  margin-left: auto;
-  margin-right: auto;
-}
 
+
+.sticky-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  border-radius: 30px;
+}
 button {
   color: green;
 }
