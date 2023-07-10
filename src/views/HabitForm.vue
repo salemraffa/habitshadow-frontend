@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HabitData msg = "Simple Habit Tracker."/>
+    <HabitData msg = "A Simple Habit Tracker."/>
   </div>
 </template>
 <script>
