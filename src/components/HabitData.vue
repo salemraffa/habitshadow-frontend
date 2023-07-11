@@ -7,8 +7,9 @@
     <input v-model="descriptionField" placeholder="Description">
     <input v-model="stackField" placeholder="Stack">
     <input v-model="chargeField" placeholder="Charge">
-    <button type="button" @click="save()">Save</button>
   </div>
+
+  <div><button type="button" @click="save()">Save</button></div>
 
   <div>
     <table>
@@ -16,7 +17,7 @@
       </thead>
       <tbody>
       <tr v-if="items.length === 0">
-        <td colspan="2">No products yet</td>
+        <td colspan="2">No habits yet</td>
       </tr>
       <tr v-for="item in myFilterFunc(filterCrit)" :key="item.idField">
         <td>{{ item.id }}</td>
@@ -44,23 +45,36 @@
   </button>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="habits-create-offcanvas" aria-labelledby="offcanvas-label">
     <div class="offcanvas-header">
-      <h5 id="offcanvas-label">New Habit</h5>
-      <button type="button" id="close-offcanvas" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <h2 id="offcanvas-label">New Habit</h2>
     </div>
     <div class="offcanvas-body">
       <form class="text-start needs-validation" id="habits-create-form" novalidate>
         <div class="mb-3">
-          <label for="nameField" class="form-label">nameField</label>
+          <label for="nameField" class="form-label">Name</label>
           <input type="text" class="form-control" id="nameField" v-model="nameField" required>
           <div class="invalid-feedback">
             Please provide the name.
           </div>
         </div>
         <div class="mb-3">
-          <label for="countField" class="form-label">countField</label>
+          <label for="countField" class="form-label">Count</label>
           <input type="text" class="form-control" id="countField" v-model="countField" required>
           <div class="invalid-feedback">
             Please provide the count till now.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="descField" class="form-label">Description</label>
+          <input type="text" class="form-control" id="descField" v-model="descriptionField" required>
+          <div class="invalid-feedback">
+            Please provide the description.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="stackField" class="form-label">Stack</label>
+          <input type="text" class="form-control" id="stackField" v-model="stackField" required>
+          <div class="invalid-feedback">
+            Please provide a stack.
           </div>
         </div>
         <div class="mb-3">
@@ -76,7 +90,7 @@
 
 
         <div class="mt-5">
-          <button class="btn btn-primary me-3" type="submit" @click.prevent="createPerson">Create</button>
+          <button class="btn btn-primary me-3" type="submit" @click.prevent="createHabit">Create</button>
           <button class="btn btn-danger" type="reset">Reset</button>
         </div>
       </form>
@@ -171,4 +185,11 @@ export default {
 button {
   color: green;
 }
+
+table{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 </style>
